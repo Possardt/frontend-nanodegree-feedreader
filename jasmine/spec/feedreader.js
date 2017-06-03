@@ -19,29 +19,29 @@ $(function() {
         });
 
         it('has defined URLs', function(){
-            for(var i = 0; i < allFeeds.length; i++){
-                expect(allFeeds[i].url).not.toBe('');
-                expect(allFeeds[i].url).not.toBe(null);
-                expect(allFeeds[i].url).not.toBe(undefined);
-            }
+            allFeeds.forEach(function(feed){
+                expect(feed.url).not.toBe('');
+                expect(feed.url).not.toBe(null);
+                expect(feed.url).not.toBe(undefined);
+            });
         });
 
         it('has defined names', function(){
-            for(var i = 0; i < allFeeds.length; i++){
-                expect(allFeeds[i].name).not.toBe('');
-                expect(allFeeds[i].name).not.toBe(null);
-                expect(allFeeds[i].name).not.toBe(undefined);
-            }
+            allFeeds.forEach(function(feed){
+                expect(feed.name).not.toBe('');
+                expect(feed.name).not.toBe(null);
+                expect(feed.name).not.toBe(undefined);
+            });
         });
     });
 
     //menu should be hidden by defualt
     describe('The Menu',function(){
-    
+
         it('is hidden by default', function(){
             expect($('body').hasClass('menu-hidden')).toBe(true);
         });
-    
+
         it('changes visibility when clicked', function(){
             $('.icon-list').click();
             expect($('body').hasClass('menu-hidden')).toBe(false);
@@ -59,7 +59,7 @@ $(function() {
         });
 
         it('should get Initial feed', function(done){
-            expect($('.feed').length).toBe(1);
+            expect($('.entry').find('h2')[0]).toBeDefined();
             done();
         });
     });
@@ -79,5 +79,5 @@ $(function() {
             expect(originalFirstText).not.toBe($('.entry').find('h2')[0].innerText);
             done();
         });
-    });    
+    });
 }());
