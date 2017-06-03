@@ -59,7 +59,7 @@ $(function() {
         });
 
         it('should get Initial feed', function(done){
-            expect($('.entry').find('h2')[0]).toBeDefined();
+            expect($('.feed .entry').length).not.toBe(0);
             done();
         });
     });
