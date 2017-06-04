@@ -66,17 +66,24 @@ $(function() {
 
     //ensuring call to change feed works
     describe('New Feed Selection', function(){
-        var originalFirstText;
+        var firstText, secondText;
 
-        beforeEach(function(done){
-            originalFirstText = $('.entry').find('h2')[0].innerText;
+        beforeAll(function(done){
             loadFeed(1, function(){
+                firstText = $('.entry').find('h2')[0].innerText;
+                done();
+            });
+        });
+
+        beforeAll(function(done){
+            loadFeed(2, function(){
+                secondText = $('.entry').find('h2')[0].innerText;
                 done();
             });
         });
 
         it('should get a different feed',function(done){
-            expect(originalFirstText).not.toBe($('.entry').find('h2')[0].innerText);
+            expect(firstText).not.toBe(secondText);
             done();
         });
     });
